@@ -47,19 +47,19 @@ let count = 0;
 const checkCekboxes = () =>{
     if (lowercase.checked) {
         validChars += lowercaseChars;
-        count += 1;
+        count ++;
     }
     if (uppercase.checked) {
         validChars += uppercaseChars;
-        count += 1;
+        count ++;
     }
     if (paswordNumber.checked) {
         validChars += numberChars;
-        count += 1;
+        count ++;
     }
     if (paswordSymbol.checked) {
         validChars += symbolChars;
-        count += 1;
+        count ++;
     }
     noneChecked();
 }
@@ -72,16 +72,10 @@ const noneChecked = () => {
     }
 }
 
-//
-generate.addEventListener("click", () => {
-    checkCekboxes();
-    determineStregth();
-})
-
 // the function will determine strength oh the password
 const determineStregth = () =>{
     if(count===1){
-        passwordStrength.textContent = "too weak!"
+        passwordStrength.innerHTML = "too weak!"
         rec1.classList.add('too-weak')
     } else if(count===2){
         passwordStrength.innerHTML = "weak"
@@ -101,4 +95,61 @@ const determineStregth = () =>{
     }
 }
 
-console.log(passwordStrength);
+//This function removes styles if they already have any
+const removeStyleRec = () => {
+    rec1.classList.remove('too-weak');
+    rec1.classList.remove('weak');
+    rec2.classList.remove('weak');
+    rec1.classList.remove('medium');
+    rec2.classList.remove('medium');
+    rec3.classList.remove('medium');
+    rec1.classList.remove('strong');
+    rec2.classList.remove('strong');
+    rec3.classList.remove('strong');
+    rec4.classList.remove('strong');
+}
+
+// this function made random password 
+function generatePassword() {
+    let length = range.value;
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      let randomIndex = Math.floor(Math.random() * validChars.length);
+      password += validChars[randomIndex];
+    }
+    return password;
+}
+
+
+//make  password copy  when click copy svg
+copy.addEventListener('click', () => {
+    // Create a new textarea element to hold the content to be copied
+    const textarea = document.createElement('textarea');
+    textarea.value = generatedPassword.textContent;
+    document.body.appendChild(textarea);
+    
+    // Select the content of the textarea and copy it to the clipboard
+    textarea.select();
+    document.execCommand('copy');
+    
+    // Remove the textarea from the document
+    document.body.removeChild(textarea);
+})
+
+//
+generate.addEventListener("click", () => {
+    validChars = ""
+    count = 0;
+    removeStyleRec();
+    checkCekboxes();
+    determineStregth();
+    if (count > 0) {
+        let password = generatePassword();
+        generatedPassword.innerHTML = password;
+        generatedPassword.classList.remove("remove");
+    }
+
+})
+
+
+
