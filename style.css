@@ -12,10 +12,286 @@
     --green:#A4FFAF;
     --dark-white:#E6E5EA;
     --grey:#817D92;
+    --dark-grey:#24232C;
+    --very-dark-gray:#18171F;
 }
 
 body{
     font-family: 'JetBrains Mono', monospace;
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--very-dark-gray);
+    gap: 16px;
 }
+
+/* for all p  and h2 elements */
+p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21.1px;
+    color: var(--dark-white);
+}
+
+h2{
+    font-size:24px ;
+    line-height:31.7px;
+    font-weight:700 ;
+}
+
+.header{
+    font-size: 24px;
+    line-height: 31.7px;
+    font-weight: 700;
+    color: var(--grey);
+}
+
+.password-container{
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    width:343px;
+    align-items: center;
+    background-color: var(--dark-grey);
+}
+
+.generated-password{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--dark-white);
+}
+
+.remove{
+    opacity: 25%;
+}
+
+.copy{
+    cursor: pointer;
+    transform: scale(0.84);
+}
+
+.copy:hover path{
+    fill: var(--dark-white);
+}
+
+.generator-container{
+    display: flex;
+    flex-direction: column;
+    width: 343px;
+    gap: 13px;
+    padding: 16px;
+    background-color: var(--dark-grey);
+}
+
+.character-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.character-container h2{
+    color: var(--green);
+}
+
+#range{
+    appearance: none;
+    outline: none;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg,#A4FFAF 50.00%,#18171F 25.00%);
+    margin-bottom: 29px;
+}
+
+#range[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    background-color: var(--dark-white);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#range::-webkit-slider-thumb:hover{
+    background-color: #18171F;
+    border: 2px solid var(--green);
+}
+
+.checkbox-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 19px;
+}
+
+.chackboxs{
+    display: flex;
+    gap: 23px;
+    align-items: center;
+}
+
+.check{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--dark-white);
+    cursor: pointer;
+}
+
+.check:checked{
+    appearance: none;
+    background-color: var(--green);
+    background-image: url(./images/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.error{
+    color: var(--red);
+    display: none;
+}
+
+.strength-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--very-dark-gray);
+    padding: 15px;
+}
+
+.strength{
+    color: var(--grey);
+}
+
+.password-strength{
+    display: flex;
+    gap: 16px;
+}
+
+#strength-level{
+    color: var(--dark-white);
+    text-transform: uppercase;
+}
+
+.rec-container{
+    display: flex;
+    gap: 8px;
+}
+
+.too-weak{
+    background-color: var(--red);
+}
+
+.weak{
+    background-color: var(--orange);
+}
+
+.medium{
+    background-color: var(--yellow);
+}
+
+.strong{
+    background-color: var(--green);
+}
+
+.rec1 , .rec2 , .rec3 , .rec4{
+    width: 10px;
+    height: 28px;
+    border: 2px solid var(--dark-white);
+}
+
+.generate-button{
+    background-color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border: none;
+    width: 311px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.generate-button:hover{
+    background-color: var(--dark-grey);
+    border: 2px solid var(--green);
+}
+
+.generate-button:hover p{
+    color: var(--green);
+}
+
+.generate-button:hover svg path{
+    fill: var(--green);
+}
+
+.generate-button p{
+    text-transform: uppercase;
+    color: var(--dark-grey);
+}
+
+
+@media screen and (min-width:768px) {
+
+    /* all p element and h2 */
+    p{
+        font-size: 18px;
+        line-height: 23.7px;
+    }
+
+    h2{
+        font-size: 32px;
+        line-height: 42.25px;
+    }
+    /*  */
+
+    body{
+        gap: 24px;
+    }
+
+    .header{
+        font-size: 24px;
+        line-height: 31.7px;
+    }
+
+    .password-container{
+        width: 540px;
+        padding: 19px 30px;
+    }
+
+    .copy{
+        transform: scale(1);
+    }
+
+    .generator-container{
+        width: 540px;
+        gap: 32px;
+        padding: 32px;
+    }
+
+    .character-container{
+        margin-bottom: 3px;
+    }
+
+    #range{
+        margin-bottom: 10px;
+    }
+
+    .checkbox-container{
+        margin: 0;
+    }
+
+    .generate-button{
+        width: 100%;
+        height: 65px;
+        gap: 24px;
+    }
+    
+}
+
+
+
